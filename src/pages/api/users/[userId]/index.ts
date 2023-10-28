@@ -35,6 +35,17 @@ export default async function handler(
           .json({ message: "An error occurred while editing user" });
       }
       break;
+    case "DELETE":
+      try {
+        const sql = "DELETE FROM users WHERE id = $1";
+        const result = await conn.query(sql, [userId]);
+        res.status(200).json(result.rows);
+      } catch {
+        res
+          .status(500)
+          .json({ message: "An error occurred while deleting user" });
+      }
+      break;
     default:
       res.status(400).json({ message: "Method not supported" });
   }
