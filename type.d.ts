@@ -3,3 +3,10 @@ type user = {
   username: string;
   email: string;
 };
+
+type todo = {
+  id: number;
+  userId: number;
+  title: string;
+  content: string;
+};
